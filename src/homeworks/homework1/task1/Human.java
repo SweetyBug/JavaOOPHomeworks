@@ -6,7 +6,7 @@ public class Human {
     protected Mother mother;
     protected Father father;
     protected String name;
-    protected int age;
+    protected String age;
 
 
 }

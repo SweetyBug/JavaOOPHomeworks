@@ -1,6 +1,4 @@
 package homeworks.homework1.task1;
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 import static homeworks.homework1.task1.Child.childrenAll;
 import static homeworks.homework1.task1.Father.fathers;
@@ -27,24 +25,24 @@ public class FamilyTree {
         String name = user.nextLine();
         child.name = name;
         System.out.println("Введите возраст ребенка: ");
-        int age = user.nextInt();
+        String age = user.nextLine();
         child.age = age;
         System.out.println("Заполнить данные о маме? (Введите Y/n): ");
 
         answer = user.nextLine();
         if (answer.equals("Y")){
-            mother = addMother();
+            mother = addMother(child);
             child.mother = mother;
         } else if (answer.equals("n")) {
             System.out.println("Заполните данные об отце: ");
-            father = addFather();
+            father = addFather(child);
             child.father = father;
         }else
         if (mother != null) {
             System.out.println("Заполнить данные об отце (Введите Y/n): ");
             answer = user.nextLine();
             if (answer.equals("Y")){
-                father = addFather();
+                father = addFather(child);
                 child.father = father;
             }
         }
@@ -54,66 +52,72 @@ public class FamilyTree {
         return child;
     }
 
-    public static Mother addMother() {
+    public static Mother addMother(Child child) {
         Scanner user = new Scanner(System.in);
         Mother mother = new Mother();
+        Child child1 = new Child();
         Mother grandmother = null;
         Father grandfather = null;
 
         System.out.println("Введите ФИО: ");
         String name = user.nextLine();
         mother.name = name;
+        child1.name = name;
         System.out.println("Введите возраст: ");
-        int age = user.nextInt();
+        String age = user.nextLine();
         mother.age = age;
+        child1.age = age;
         System.out.println("Заполнить данные о бабушке? (Введите Y/n): ");
         String answer = user.nextLine();
         if (answer.equals("Y")){
-            grandmother = addMother();
+            grandmother = addMother(child1);
             mother.mother = grandmother;
         }
         System.out.println("Заполнить данные о дедушке? (Введите Y/n): ");
         answer = user.nextLine();
         if (answer.equals("Y")){
-            grandfather = addFather();
+            grandfather = addFather(child1);
             mother.father = grandfather;
         }
 
         System.out.println("Если у данного человека более одного ребенка, укажите кол-во, в противном случае укажите '1': ");
-        int num = user.nextInt();
-        if (num > 1){
-            for (int i = 1; i < num; i++) {
+        String num = user.nextLine();
+        if (!num.equals("n")){
+            int x = Integer.parseInt(num);
+            for (int i = 1; i < x; i++) {
                 Child nextChild = addNextChild();
                 nextChild.mother = mother;
                 mother.children.add(nextChild);
             }
         }
-        mothers.add(mother);
         return mother;
     }
 
-    public static Father addFather(){
+    public static Father addFather(Child child){
         Scanner user = new Scanner(System.in);
         Father father = new Father();
+        Child child1 = new Child();
         Mother grandmother = null;
         Father grandfather = null;
 
         System.out.println("Введите ФИО: ");
         String name = user.nextLine();
         father.name = name;
+        child1.name = name;
         System.out.println("Введите возраст: ");
-        int age = user.nextInt();
+        String age = user.nextLine();
         father.age = age;
+        child1.age = age;
         System.out.println("Заполнить данные о бабушке? (Введите Y/n): ");
         String answer = user.nextLine();
         if (answer.equals("Y")){
-            grandmother = addMother();
+            grandmother = addMother(child1);
             father.mother = grandmother;
         }
         System.out.println("Заполнить данные о дедушке? (Введите Y/n): ");
         answer = user.nextLine();
         if (answer.equals("Y")){
-            grandfather = addFather();
+            grandfather = addFather(child1);
             father.father = grandfather;
         }
 
@@ -135,7 +139,7 @@ public class FamilyTree {
         System.out.println("Введите ФИО ребенка: ");
         String name = user.nextLine();
         System.out.println("Введите возраст ребенка: ");
-        int age = user.nextInt();
+        String age = user.nextLine();
         Child nextChild = new Child(name, age);
         return nextChild;
     }

@@ -6,25 +6,25 @@ public class Child extends Human{
 
     static ArrayList<Child> childrenAll = new ArrayList<>();
 
-    Child(String name, int age, Mother mother, Father father){
+    Child(String name, String age, Mother mother, Father father){
         super.name = name;
         super.age = age;
         super.mother = mother;
         super.father = father;
     }
 
-    Child(String name, int age, Mother mother){
+    Child(String name, String age, Mother mother){
         super.name = name;
         super.age = age;
         super.mother = mother;
     }
 
-    Child(String name, int age, Father father){
+    Child(String name, String age, Father father){
         super.name = name;
         super.age = age;
         super.father = father;
     }
-    Child(String name, int age){
+    Child(String name, String age){
         super.name = name;
         super.age = age;
     }

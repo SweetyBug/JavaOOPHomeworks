@@ -3,10 +3,10 @@ package homeworks.homework1.task1;
 import java.util.ArrayList;
 
 public class Father extends Human{
-    private ArrayList<Child> children;
+    ArrayList<Child> children;
     static ArrayList<Father> fathers = new ArrayList<>();
 
-    Father(String name, int age, Mother mother, Father father, ArrayList<Child> children) {
+    Father(String name, String age, Mother mother, Father father, ArrayList<Child> children) {
         super.name = name;
         super.age = age;
         super.mother = mother;
@@ -14,24 +14,29 @@ public class Father extends Human{
         this.children = children;
     }
 
-    Father(String name, int age, Father father, ArrayList<Child> children) {
+    Father(String name, String age, Father father, ArrayList<Child> children) {
         super.name = name;
         super.age = age;
         super.father = father;
         this.children = children;
     }
 
-    Father(String name, int age, Mother mother, ArrayList<Child> children) {
+    Father(String name, String age, Mother mother, ArrayList<Child> children) {
         super.name = name;
         super.age = age;
         super.mother = mother;
         this.children = children;
     }
 
-    Father(String name, int age, ArrayList<Child> children) {
+    Father(String name, String age, ArrayList<Child> children) {
         super.name = name;
         super.age = age;
         this.children = children;
+    }
+
+    Father(String name, String age) {
+        super.name = name;
+        super.age = age;
     }
 
     Father() {
